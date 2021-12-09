@@ -24,3 +24,17 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ .container {
+  position: relative;
+}
+
+ main {
+   display: flex;
+   flex-direction: column;
+   background-color: #f4f1ec;
+   align-items: center;
+   justify-content: center;
+   padding-left: 5%;
+   padding-right: 5%;
+ }

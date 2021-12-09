@@ -1,9 +1,3 @@
-.container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
 nav {
   display: flex;
   flex-direction: row;
@@ -20,6 +14,7 @@ nav {
 
 #logo {
   font-family: Bungee;
+  font-size: 35px;
 }
 
 #arrow-down {
