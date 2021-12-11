@@ -33,3 +33,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+#negative-counter {
+  color: red;
+}
