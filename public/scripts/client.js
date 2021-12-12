@@ -27,7 +27,7 @@ const createTweetElement = function (tweet) {
   <br>
   <p>${tweet.content.text}</p>
   <footer>
-    ${tweet.created_at}
+    ${timeago.format(tweet.created_at)}
     <div class="icons">
       <button type="button"><i class="fa-solid fa-flag"></i></button>
       <button type="button"><i class="fa-solid fa-retweet"></i></button>
@@ -38,11 +38,15 @@ const createTweetElement = function (tweet) {
 };
 
 $(document).ready(function() {
-  // Listens for the POST event and prevents the default behavior
+  // Listens for the POST event and prevents the default behavior, validates the tweet then posts it using JQuery
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    $.post("/tweets", data);
+    const tweet = data.slice(5);
+    if (!tweet || tweet.length === 0 || tweet.length > 140) {
+      const errors = ["Error: You can't submit an empty tweet", "Error: Your tweet is over 140 characters long!"]
+      !tweet || tweet.length === 0 ? alert(errors[0]) : alert(errors[1]);
+    } else $.post("/tweets", data);
   })
 
   // Gets the tweets data from /tweets and calls the renderTweets function to render the tweets
