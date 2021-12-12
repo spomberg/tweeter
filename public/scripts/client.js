@@ -65,4 +65,11 @@ const createTweetElement = function (tweet) {
 
 $(document).ready(function() {
   renderTweets(data);
+
+// Listens for the POST event and prevents the default behavior
+  $("#new-tweet-form").submit(function(event) {
+    event.preventDefault();
+    const data = $(this).serialize();
+    $.post("/tweets", data);
+  })
 })
