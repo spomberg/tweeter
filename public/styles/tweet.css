@@ -5,7 +5,7 @@
   height: 300%;
   border: solid;
   font-size: 20px;
-  padding: 3%;
+  padding: 1%;
   margin-bottom: 5%;
 }
 
@@ -48,9 +48,11 @@
   border-top: solid;
   font-size: 15px;
   padding-top: 1%;
+  align-items: baseline;
 }
 
 .tweet footer button {
   color: #4056A1;
-  font-size: 15px;
+  font-size: 12px;
+  border: none;
 }
