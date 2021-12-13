@@ -45,17 +45,28 @@ const createTweetElement = function (tweet) {
 };
 
 $(document).ready(function() {
+  $(".error").hide();
+  
   // Listens for the POST event and prevents the default behavior, validates the tweet then posts it using JQuery
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
     const serializedData = $(this).serialize();
     const tweet = serializedData.slice(5).replaceAll('%20', ' ');
+    
+    // Hides error message if not already hidden
+    $(".error").empty();
+    $(".error").slideUp("fast");
+
     if (!tweet || tweet.length === 0 || tweet.length > 140) {
-      const errors = ["Error: You can't submit an empty tweet", "Error: Your tweet is over 140 characters long!"]
-      !tweet || tweet.length === 0 ? alert(errors[0]) : alert(errors[1]);
+      const errors = [" ❗ Error: You can't submit an empty tweet", " ❗ Error: Your tweet is over 140 characters long!"]
+      let errStr;
+      !tweet || tweet.length === 0 ? errStr = 0 : errStr = 1;
+      $(".error").append(`<p> ${errors[errStr]} </p>`);
+      $(".error").slideDown();
     } else { 
       $.post("/tweets", serializedData, function() {
         $("#tweet-text").val("");
+        $(".counter").val(140);
         $.get("/tweets", function(data) {
           const newTweet = createTweetElement(data[data.length - 1]);
           $("#tweets-container").append(newTweet);
