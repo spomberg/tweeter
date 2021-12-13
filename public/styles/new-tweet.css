@@ -5,6 +5,10 @@
   font-weight: bold;
 }
 
+.new-tweet label {
+  font-weight: 400;
+}
+
 #tweet-text {
   border-top: none;
   border-left: none;
