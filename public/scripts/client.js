@@ -12,6 +12,13 @@ const renderTweets = function(tweets) {
   }
 };
 
+// Escape function to use with createTweetElement()
+const escapeText = function(str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 // Takes in a tweet object and returns a tweet <article> element containing the HTML structure of the tweet
 const createTweetElement = function (tweet) {
   return `<article class="tweet">
@@ -25,7 +32,7 @@ const createTweetElement = function (tweet) {
     </div>
   </header>
   <br>
-  <p>${tweet.content.text}</p>
+  <p>${escapeText(tweet.content.text)}</p>
   <footer>
     ${timeago.format(tweet.created_at)}
     <div class="icons">
