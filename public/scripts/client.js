@@ -18,7 +18,7 @@ const createTweetElement = function (tweet) {
   <header>
     <section>
       <img src="${tweet.user.avatars}"> 
-      <span>Newton</span>
+      <span>${tweet.user.name}</span>
     </section>
     <div>
       ${tweet.user.handle}
@@ -41,12 +41,20 @@ $(document).ready(function() {
   // Listens for the POST event and prevents the default behavior, validates the tweet then posts it using JQuery
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
-    const data = $(this).serialize();
-    const tweet = data.slice(5);
+    const serializedData = $(this).serialize();
+    const tweet = serializedData.slice(5).replaceAll('%20', ' ');
     if (!tweet || tweet.length === 0 || tweet.length > 140) {
       const errors = ["Error: You can't submit an empty tweet", "Error: Your tweet is over 140 characters long!"]
       !tweet || tweet.length === 0 ? alert(errors[0]) : alert(errors[1]);
-    } else $.post("/tweets", data);
+    } else { 
+      $.post("/tweets", serializedData, function() {
+        $.get("/tweets", function(data) {
+          const newTweet = createTweetElement(data[data.length - 1]);
+          $("#tweets-container").append(newTweet);
+          $("#tweet-text text").val = "";
+        })
+      });
+    }
   })
 
   // Gets the tweets data from /tweets and calls the renderTweets function to render the tweets
