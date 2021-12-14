@@ -32,9 +32,10 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span id="logo">tweeter</span>
-        <div><span><b>Write</b> a new tweet</span>
-          <br><i id="arrow-down" class="fa-solid fa-angles-down"></i>
-        </div>
+        <button name="toggle-form">
+          <span><b>Write</b> a new tweet</span>
+          <i id="arrow-down" class="fa-solid fa-angles-down"></i>
+        </button>
     </nav>
 
     <!-- Header -->
@@ -53,21 +54,20 @@
 
     <!-- New Tweet -->
     <main class="container">
-      <br>
       <section class="new-tweet">
         <div class="error">
         </div>
         <form id="new-tweet-form" method="post" action="/tweets">
           <label for="tweet-text">What are you humming about?</label>
-          <br>
-          <textarea name="text" id="tweet-text"></textarea>
+          <div>
+            <textarea name="text" id="tweet-text"></textarea>
+          </div>
           <footer>
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </footer>
         </form>
       </section>
-      <br>
 
       <!-- Tweet Container -->
       <section id="tweets-container">

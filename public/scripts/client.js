@@ -31,7 +31,6 @@ const createTweetElement = function (tweet) {
       ${tweet.user.handle}
     </div>
   </header>
-  <br>
   <p>${escapeText(tweet.content.text)}</p>
   <footer>
     ${timeago.format(tweet.created_at)}
@@ -45,8 +44,6 @@ const createTweetElement = function (tweet) {
 };
 
 $(document).ready(function() {
-  $(".error").hide();
-  
   // Listens for the POST event and prevents the default behavior, validates the tweet then posts it using JQuery
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
@@ -57,6 +54,7 @@ $(document).ready(function() {
     $(".error").empty();
     $(".error").slideUp("fast");
 
+    // Form validation, checks if the text is not empty or is over 140 characters long and displays an error if so
     if (!tweet || tweet.length === 0 || tweet.length > 140) {
       const errors = [" ❗ Error: You can't submit an empty tweet", " ❗ Error: Your tweet is over 140 characters long!"]
       let errStr;
@@ -64,9 +62,13 @@ $(document).ready(function() {
       $(".error").append(`<p> ${errors[errStr]} </p>`);
       $(".error").slideDown();
     } else { 
+
+      // Posts tweet if the form passes validation, clears text area and resets the character counter
       $.post("/tweets", serializedData, function() {
         $("#tweet-text").val("");
         $(".counter").val(140);
+
+        // Gets the tweets data and appends the latest tweet to the HTML code 
         $.get("/tweets", function(data) {
           const newTweet = createTweetElement(data[data.length - 1]);
           $("#tweets-container").append(newTweet);

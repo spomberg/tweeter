@@ -18,8 +18,27 @@ nav {
   font-size: 35px;
 }
 
-#arrow-down {
+button {
+  font-weight: 300;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+button #arrow-down {
   display: flex;
   color: red;
   justify-content: center;
+  margin-top: 4%;
+  animation-name: bounce;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(10px); }
+  100% { transform: translateY(0); }
 }
