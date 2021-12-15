@@ -1,7 +1,7 @@
 $(document).ready(function () {
   // Adds box-shadow while hovering over the tweet box
   $("#tweets-container").on("mouseover", ".tweet", function() {
-    $(this).css('box-shadow', '5px 10px #afc4e3'); 
+    $(this).css('box-shadow', '5px 8px #afc4e3'); 
   })
   
   // Removes box-shadow once the mouse leaves the tweet
@@ -18,4 +18,16 @@ $(document).ready(function () {
   $("#tweets-container").on("mouseleave", "button", function() {
     $(this).css('color', '#4056A1'); 
   })
+
+  // Shows the scroll up button when the user scrolls down and hides it when they scroll up
+  $(window).scroll(function() {
+    $(this).scrollTop() < 100 ? $("#scroll-up").hide(1000) : $("#scroll-up").show(1000);
+  });
+
+  // Reveals the form and focus the text area when the button is pressed
+  $("#scroll-up").click(function() {
+    $(window).scrollTop(0);
+    $(".new-tweet").slideDown();
+    $("#tweet-text").focus();
+  });
 });

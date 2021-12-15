@@ -40,3 +40,18 @@ body {
    display: flex;
    flex-direction: column-reverse;
  }
+
+ #scroll-up {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   background-color: red;
+   border: none;
+   position: fixed;
+   bottom: 4%;
+   border-radius: 50%;
+   width: 80px;
+   height: 80px;
+   right: 3%;
+ }
