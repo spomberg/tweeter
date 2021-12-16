@@ -21,7 +21,7 @@ $(document).ready(function () {
 
   // Shows the scroll up button when the user scrolls down and hides it when they scroll up
   $(window).scroll(function() {
-    $(this).scrollTop() < 100 ? $("#scroll-up").hide(1000) : $("#scroll-up").show(1000);
+    $(this).scrollTop() < 100 ? $("#scroll-up").hide(500) : $("#scroll-up").show(500);
   });
 
   // Reveals the form and focus the text area when the button is pressed
