@@ -5,5 +5,5 @@ $(document).ready(function() {
       $(".new-tweet").slideDown();
       $("#tweet-text").focus();
     } else $(".new-tweet").slideUp();
-  })
+  });
 });
