@@ -74,6 +74,8 @@ body {
    .container {
      float: right;
      margin-top: 10rem;
+     margin-left: 5%;
+     margin-right: 5%;
    }
 
    #scroll-up {
