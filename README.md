@@ -17,5 +17,5 @@ Tweeter is a simple, single-page Twitter clone built with HTML, CSS, JS, jQuery 
 
 ## Screenshots
 !["Screenshot of desktop view"](https://github.com/spomberg/tweeter/blob/master/docs/desktop-view.png?raw=true)
-!["Screenshot of mobile view"] (https://github.com/spomberg/tweeter/blob/master/docs/mobile-view.png?raw=true)
-!["Screenshot of mobile view with the scroll up button"] (https://github.com/spomberg/tweeter/blob/master/docs/scroll-up-button.jpg?raw=true)
+!["Screenshot of mobile view"](https://github.com/spomberg/tweeter/blob/master/docs/mobile-view.png?raw=true)
+!["Screenshot of mobile view with the scroll up button"](https://github.com/spomberg/tweeter/blob/master/docs/scroll-up-button.jpg?raw=true)
